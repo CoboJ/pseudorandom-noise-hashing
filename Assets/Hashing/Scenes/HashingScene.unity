@@ -447,9 +447,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca26fc58aedcfa4858660b5824b3d48c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  domain:
+    translation:
+      x: 0
+      y: 0
+      z: 0
+    rotation:
+      x: 0
+      y: 0
+      z: 0
+    scale:
+      x: 8
+      y: 8
+      z: 8
   instanceMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   material: {fileID: 2100000, guid: d8b8d7b4d1f7dbfa3a8046c0abb6c6de, type: 2}
   resolution: 32
+  verticalOffset: 1
+  seed: 0
 --- !u!4 &1931531331
 Transform:
   m_ObjectHideFlags: 0
