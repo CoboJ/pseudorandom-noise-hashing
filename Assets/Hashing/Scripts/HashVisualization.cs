@@ -68,6 +68,8 @@ public class HashVisualization : MonoBehaviour
 
     bool isDirty;
 
+    Bounds bounds;
+
     void OnEnable() 
     {
         isDirty = true;
@@ -130,12 +132,16 @@ public class HashVisualization : MonoBehaviour
             hashesBuffer.SetData(hashes);
             positionsBuffer.SetData(positions);
             normalsBuffer.SetData(normals);
+
+            bounds = new Bounds(
+				transform.position,
+				float3(2f * cmax(abs(transform.lossyScale)) + displacement)
+			);
         }
 
         Graphics.DrawMeshInstancedProcedural
         (
-            instanceMesh, 0, material, new Bounds(Vector3.zero, Vector3.one),
-            hashes.Length, propertyBlock
+            instanceMesh, 0, material, bounds, hashes.Length, propertyBlock
         );
     }
 }
