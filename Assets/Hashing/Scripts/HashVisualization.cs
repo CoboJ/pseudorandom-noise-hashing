@@ -124,7 +124,7 @@ public class HashVisualization : MonoBehaviour
             isDirty = false;
             transform.hasChanged = false;
 
-            JobHandle handle = Shapes.Job<Shapes.Sphere>.ScheduleParallel(positions, normals, resolution, transform.localToWorldMatrix, default);
+            JobHandle handle = Shapes.Job<Shapes.Torus>.ScheduleParallel(positions, normals, resolution, transform.localToWorldMatrix, default);
 
             new HashJob
             {
