@@ -69,6 +69,11 @@ public static class Shapes
         }
     }
 
+    public delegate JobHandle ScheduleDelegate (
+        NativeArray<float3x4> positions, NativeArray<float3x4> normals, 
+        int resolution, float4x4 trs, JobHandle dependancy
+    );
+
     [BurstCompile(FloatPrecision.Standard, FloatMode.Fast, CompileSynchronously = true)]
     public struct Job<S> : IJobFor where S : struct, IShape {
         [WriteOnly]
