@@ -34,6 +34,21 @@ public static class Shapes
         }
     }
 
+    public struct Sphere : IShape {
+        public Point4 GetPoint4 (int i, float resolution, float invResolution) {
+            float4x2 uv = IndexTo4UV(i, resolution, invResolution);
+
+            float r = 0.5f;
+            float4 s = r * sin(PI * uv.c1);
+
+            Point4 p;
+            p.positions.c0 = s * sin(2f * PI * uv.c0);
+            p.positions.c1 = r * cos(PI * uv.c1);
+            p.positions.c2 = s * cos(2f * PI * uv.c0);
+            p.normals = p.positions;
+            return p;
+        }
+    }
     [BurstCompile(FloatPrecision.Standard, FloatMode.Fast, CompileSynchronously = true)]
     public struct Job<S> : IJobFor where S : struct, IShape {
         [WriteOnly]
