@@ -51,6 +51,9 @@ public class HashVisualization : MonoBehaviour
 
     [SerializeField] Shape shape;
 
+    [SerializeField, Range(0.1f, 10f)]
+    float instanceScale = 2f;
+
     static int
         hashesId = Shader.PropertyToID("_Hashes"),
         positionsId = Shader.PropertyToID("_Positions"),
@@ -102,7 +105,7 @@ public class HashVisualization : MonoBehaviour
         propertyBlock.SetBuffer(positionsId, positionsBuffer);
         propertyBlock.SetBuffer(normalsId, normalsBuffer);
         propertyBlock.SetVector(configId, new Vector4(
-            resolution, 1f / resolution, displacement
+            resolution, instanceScale / resolution, displacement
         ));
     }
 
